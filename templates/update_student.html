@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+
+    <!-- Include Bootstrap CSS for better styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container for the form */
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            color: #4A4A4A;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Form elements styling */
+        label {
+            font-size: 18px;
+            font-weight: 500;
+            color: #5f6368;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 18px;
+            margin-bottom: 25px;
+            background-color: #fafafa;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #00b0ff;  /* Soft pastel blue */
+            outline: none;
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #FF6F61;  /* Coral */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FF4A37;  /* Slightly darker coral */
+        }
+
+        /* Link Styling */
+        a {
+            display: inline-block;
+            font-size: 18px;
+            color: #4B0082;  /* Deep violet */
+            text-decoration: none;
+            margin-top: 20px;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #8A2BE2;  /* Slightly lighter violet */
+        }
+
+        /* Alert messages */
+        .alert {
+            padding: 15px;
+            background-color: #f8d7da;
+            color: #721c24;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .alert.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Update Student</h1>
+
+    <!-- Success/Error message -->
+    <div class="alert success" id="success-alert">
+        Student updated successfully!
+    </div>
+    <div class="alert error" id="error-alert">
+        Error occurred while updating the student.
+    </div>
+
+    <!-- Update Form -->
+    <form method="POST" onsubmit="return handleSubmit(event)">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ student.name }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="age" class="form-label">Age:</label>
+            <input type="text" id="age" name="age" class="form-control" value="{{ student.age }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="grade" class="form-label">Grade:</label>
+            <input type="text" id="grade" name="grade" class="form-control" value="{{ student.grade }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+    <a href="{{ url_for('view_students') }}">Back to Students List</a>
+</div>
+
+<script>
+    // Function to handle form submission and display alerts
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        let name = document.getElementById('name').value;
+        let age = document.getElementById('age').value;
+        let grade = document.getElementById('grade').value;
+
+        // Simple form validation
+        if (!name || !age || !grade) {
+            displayAlert('error', 'All fields are required!');
+            return;
+        }
+
+        // Simulate success (in production, you should make a POST request here)
+        displayAlert('success', 'Student updated successfully!');
+        // Optionally, redirect after a delay
+        setTimeout(() => {
+            window.location.href = "{{ url_for('view_students') }}";
+        }, 2000);
+    }
+
+    // Function to display alert messages
+    function displayAlert(type, message) {
+        let successAlert = document.getElementById('success-alert');
+        let errorAlert = document.getElementById('error-alert');
+
+        if (type === 'success') {
+            successAlert.style.display = 'block';
+            successAlert.innerText = message;
+            errorAlert.style.display = 'none';
+        } else {
+            errorAlert.style.display = 'block';
+            errorAlert.innerText = message;
+            successAlert.style.display = 'none';
+        }
+
+        // Hide alert after 4 seconds
+        setTimeout(() => {
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+        }, 4000);
+    }
+</script>
+
+<!-- Include Bootstrap JS (for form validation, tooltips, etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
