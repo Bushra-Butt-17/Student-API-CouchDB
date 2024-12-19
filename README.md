@@ -160,8 +160,8 @@ This application provides basic **CRUD (Create, Read, Update, Delete)** function
 
 ### 1. **Home Page**
 The homepage displays the list of all students in a table, with options to **Add**, **Edit**, and **Delete** students.
-![Main1](https://github.com/user-attachments/assets/5d6b34d7-4226-48ce-80dc-df5c697b77a0)
 ![Main](https://github.com/user-attachments/assets/df7a90ab-e03c-4635-bb8c-0233144f62b2)
+![Main1](https://github.com/user-attachments/assets/5d6b34d7-4226-48ce-80dc-df5c697b77a0)
 ![Main3](https://github.com/user-attachments/assets/1db6a08e-83f1-4a60-9eb6-17129f0634e4)
 ![Main2](https://github.com/user-attachments/assets/f3e16e50-b90b-4e04-99ce-7796619544e8)
 
