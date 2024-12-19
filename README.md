@@ -1,7 +1,6 @@
 
 <img src='https://github.com/user-attachments/assets/76652fd3-996d-4feb-8aa6-1aabe569fe94' width=100%>
 
-https://github.com/user-attachments/assets/34d42e04-7f48-4a92-b46b-74396554ed22
 
 
 ---
@@ -12,8 +11,9 @@ Welcome to the **Student Management System** built using **Flask** and **CouchDB
 
 ## 🔗 Demo Link
 
-Check out the live demo of this application:  
-[Student Management System Demo](http://your-demo-link.com)
+Check out the demo of this application:  
+https://github.com/user-attachments/assets/34d42e04-7f48-4a92-b46b-74396554ed22
+
 
 ---
 
