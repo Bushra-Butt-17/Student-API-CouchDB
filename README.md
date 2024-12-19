@@ -167,8 +167,10 @@ The homepage displays the list of all students in a table, with options to **Add
 
 ### 2. **Add Student Form**
 A simple form where users can add a new student by entering their **Name**, **Age**, and **Grade**.
+![Add-Students](https://github.com/user-attachments/assets/30ed59f0-37e2-4188-a277-3e37c869cf37)
+![Add-Form](https://github.com/user-attachments/assets/bc85cafa-8e5a-4ced-9e95-79ebc986f309)
+![Added-Student](https://github.com/user-attachments/assets/3381723c-f3ba-4a30-980e-b7151d18d139)
 
-![Add Student Form](https://github.com/user-attachments/assets/add-student-form-preview.jpg)
 
 ### 3. **Update Student Form**
 A form to edit an existing student's details.
