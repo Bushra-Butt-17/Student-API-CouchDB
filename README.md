@@ -174,8 +174,12 @@ A simple form where users can add a new student by entering their **Name**, **Ag
 
 ### 3. **Update Student Form**
 A form to edit an existing student's details.
+![View-Students](https://github.com/user-attachments/assets/f8c54ee7-96ac-47ae-9a07-990dcdba6428)
+![Delete-Success](https://github.com/user-attachments/assets/889773a7-fbfd-447c-b43e-d32b4f78be86)
+![Update-Form](https://github.com/user-attachments/assets/88e23d8b-f642-4de3-b08e-08b4439505ff)
+![Update-Success](https://github.com/user-attachments/assets/4964fde4-9bb0-4960-9a05-e0d0feb6306e)
+![Update-Student](https://github.com/user-attachments/assets/78ffb934-7a5d-4cfd-acfa-87b9b2d146fa)
 
-![Update Student Form](https://github.com/user-attachments/assets/update-student-form-preview.jpg)
 
 ---
 
