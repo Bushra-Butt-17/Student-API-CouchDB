@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student API with CouchDB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F8; /* Light gray background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #1E3A8A; /* Navy background */
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .section:nth-child(odd) {
+            background: #F8C8D8; /* Pale Pink background for odd sections */
+            color: #333;
+        }
+
+        .section:nth-child(even) {
+            background: #D6AEDD; /* Lilac background for even sections */
+            color: #333;
+        }
+
+        .section h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #1E3A8A; /* Navy color for headers */
+        }
+
+        .section p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .blog-post {
+            background-color: white;
+            padding: 50px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .blog-post h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 32px;
+            color: #1E3A8A; /* Navy */
+            margin-bottom: 20px;
+        }
+
+        .blog-post p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Button Styles */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            background-color: #FF6F61; /* Coral color for buttons */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #F56D4A; /* Lighter coral on hover */
+            transform: translateY(-5px);
+        }
+
+        .btn:active {
+            background-color: #1E3A8A; /* Navy when clicked */
+            transform: translateY(0);
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #FF6F61; /* Coral outline */
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1E3A8A; /* Navy footer */
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            margin-top: 50px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer a {
+            color: #FF6F61; /* Coral color for links */
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Welcome to the Student API</h1>
+        <p>Built with CouchDB - A NoSQL Database for Managing Student Data</p>
+  
+
+    </div>
+    <!-- Action Buttons Heading -->
+<div class="section">
+    <h2>Manage Students</h2>
+    <div class="buttons">
+        <a href="/add_student" class="btn">Add Student</a>
+        <a href="/view_students" class="btn">View Students</a>
+        <a href="/view_students" class="btn">Update Student</a>
+        <a href="/view_students" class="btn">Delete Student</a>
+    </div>
+</div>
+
+
+</div>
+
+
+    <!-- Blog Post Section: About CouchDB -->
+    <div class="container">
+        <div class="blog-post">
+            <h3>What is CouchDB?</h3>
+            <p><strong>CouchDB</strong> is an open-source NoSQL database that is designed for ease of use and scalability. Unlike traditional relational databases, CouchDB uses a document-based structure, storing data in JSON format. This makes it highly flexible and easy to scale horizontally across distributed systems.</p>
+            <p>With its simple RESTful HTTP API, CouchDB allows you to store, retrieve, and manage your data using HTTP methods like GET, POST, PUT, and DELETE. This makes interacting with CouchDB straightforward and intuitive, even for developers who are familiar with REST APIs.</p>
+            <p>One of the key advantages of CouchDB is its <strong>eventual consistency</strong>, which allows for distributed replication and fault tolerance. This makes it an excellent choice for applications that need to handle large amounts of data across multiple servers.</p>
+            <p>Another important feature of CouchDB is its <strong>multi-version concurrency control</strong> (MVCC), which ensures that users can make changes to the database without interfering with one another. This feature is particularly useful in highly concurrent applications.</p>
+        </div>
+
+        <!-- Blog Post: Features of CouchDB -->
+        <div class="blog-post">
+            <h3>Key Features of CouchDB</h3>
+            <p><strong>1. Schema-free Document Storage:</strong> CouchDB stores data in JSON documents, which allows for flexible data storage without needing to define a rigid schema upfront.</p>
+            <p><strong>2. Distributed Architecture:</strong> CouchDB’s distributed nature means it can easily scale horizontally across many servers, making it ideal for cloud-based applications.</p>
+            <p><strong>3. ACID Compliance:</strong> CouchDB ensures data consistency, integrity, and isolation through its ACID-compliant nature, even when dealing with large distributed systems.</p>
+            <p><strong>4. Powerful Querying and Indexing:</strong> CouchDB supports rich querying with MapReduce views and allows indexing for fast data retrieval.</p>
+            <p><strong>5. Conflict Resolution:</strong> CouchDB's multi-version concurrency control (MVCC) helps resolve conflicts in distributed systems by retaining multiple versions of documents.</p>
+        </div>
+
+        <!-- Blog Post: Use Cases for CouchDB -->
+        <div class="blog-post">
+            <h3>Why Use CouchDB?</h3>
+            <p><strong>1. Distributed Applications:</strong> CouchDB is designed to work well for applications that need to handle data across many servers, making it a great fit for distributed systems.</p>
+            <p><strong>2. Mobile Applications:</strong> CouchDB can be easily synced with mobile devices, allowing for offline-first applications that can sync when online access is available.</p>
+            <p><strong>3. Big Data and Analytics:</strong> Its ability to scale across multiple servers and handle large datasets makes CouchDB a solid choice for big data applications.</p>
+            <p><strong>4. Collaborative Systems:</strong> CouchDB’s conflict resolution features are ideal for systems where many users need to work with the same data simultaneously, like collaborative editing tools.</p>
+        </div>
+
+        
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Student API. All rights reserved.</p>
+        <p>Learn more about <a href="https://couchdb.apache.org/" target="_blank">CouchDB</a></p>
+    </div>
+
+</body>
+</html>

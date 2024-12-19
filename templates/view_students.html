@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Students</title>
+
+    <!-- Include FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- Include Google Fonts for a cleaner, modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f8fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif; /* Using the same font for consistency */
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 18px;
+            line-height: 1.6; /* Add more spacing for readability */
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+            font-weight: 400;
+            color: #2c3e50;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ecf0f1;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dbe6f2;
+        }
+
+        tr:hover {
+            background-color: #e2f0f4;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, #3498db, #2980b9); /* Gradient color */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #2980b9, #3498db);
+            transform: scale(1.05);
+        }
+
+        /* Action Icons Styling */
+        .action-icons {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 12px;
+        }
+
+        .action-icons a, .action-icons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .action-icons i {
+            font-size: 24px;
+            color: #e74c3c; /* Red color for delete action */
+        }
+
+        .action-icons a:hover i {
+            color: #3498db;
+            transform: scale(1.3);
+        }
+
+        .action-icons button {
+            color: #e74c3c;
+        }
+
+        .action-icons button:hover i {
+            color: #c0392b; /* Darker red for hover */
+            transform: scale(1.3);
+        }
+
+        /* Flash Message Styling */
+        .alert {
+            margin-bottom: 20px;
+            padding: 18px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .alert.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .alert .btn-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Flash Messages for Success/Error -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="container">
+        {% for category, message in messages %}
+        <div class="alert {{ category }}">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h1>Students List</h1>
+
+        <!-- Table displaying student details -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Grade</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.grade }}</td>
+                    <td>
+                        <div class="action-icons">
+                            <!-- Update Icon -->
+                            <a href="{{ url_for('update_student', doc_id=student._id) }}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <!-- Delete Icon -->
+                            <form action="{{ url_for('delete_student', doc_id=student._id) }}" method="POST" style="display:inline;">
+                                <button type="submit">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Back to Home Button -->
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+
+    <!-- Include Bootstrap JS for Flash Messages -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
