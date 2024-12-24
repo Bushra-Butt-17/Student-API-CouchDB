@@ -227,9 +227,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 💬 **Contact**
 
-Feel free to reach out with questions, suggestions, or feedback at [email@example.com](mailto:bsdsf21m020@pucit.edu.pk).
+Feel free to reach out with questions, suggestions, or feedback at bsdsf21m020@pucit.edu.pk(mailto:bsdsf21m020@pucit.edu.pk).
 
-Made with ❤️ by 
+Made with ❤️ by Bushra Shahbaz
 
 ---
 
