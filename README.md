@@ -53,7 +53,7 @@ Before you start, ensure you have the following installed:
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/your-username/student-api-couchdb.git
+git clone https://github.com/Bushra-Butt-17/student-api-couchdb.git
 cd student-api-couchdb
 ```
 
